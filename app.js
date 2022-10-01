@@ -10,6 +10,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
+//(1) Step 1: Initialize REACT file
+app.use(express.static(__dirname + '/public'));
+
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 //CORS issue: Allow frontend to communicate in different ports
@@ -23,11 +26,16 @@ app.use((req, res, next) => {
 app.use('/api/places', placesRoutes);
 app.use('/api/users', userRoutes);
 
-//Create our own error message when there is any error due to incorrect url
+//(2) Step 2: Initialize REACT file
 app.use((req, res, next) => {
-    const error = new HttpError('Could not find this route', 404);
-    throw error;
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
+
+// //Create our own error message when there is any error due to incorrect url
+// app.use((req, res, next) => {
+//     const error = new HttpError('Could not find this route', 404);
+//     throw error;
+// });
 
 //When there are 4 params (error), express.js will treat it as error handle middleware function
 app.use((error, req, res, next) => {
