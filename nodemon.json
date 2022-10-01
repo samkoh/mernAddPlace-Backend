@@ -1,0 +1,8 @@
+{
+    "env": {
+        "DB_USER": "merndev",
+        "DB_PASSWORD": "merndev",
+        "DB_NAME": "mern",
+        "GOOGLE_API_KEY": "AIzaSyAxr3J-5vhLiNRC5dyNvJmgIPdw600cV2Q"
+    }
+}
