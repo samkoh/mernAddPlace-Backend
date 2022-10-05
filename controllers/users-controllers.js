@@ -71,7 +71,7 @@ const signUp = async (req, res, next) => {
     const createdUser = new User({
         name,
         email,
-        image: 'https://assets.nst.com.my/images/articles/exchangtr_1656388298.jpg',
+        image: req.file.path,
         password,
         places: []
     });
